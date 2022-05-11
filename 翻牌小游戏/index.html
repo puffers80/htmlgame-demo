@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head lang="en">
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0"/>
+		<title>扑克牌记忆力游戏</title>
+		<link href="styles/matchgame.css" rel="stylesheet">
+		<script type="text/javascript" src="scripts/game.js"></script>
+		<script type="text/javascript" src="scripts/jquery-1.11.1.min.js"></script>
+	</head>
+	<body onLoad="timeAdd()">
+		<div style="text-align:center;">
+		<p>请在30秒内消除所有牌</p>
+		</div>
+		<form name="visit">
+			<input class="time" size=12 name=timetext>
+			<input class="time" size=12 name=scoretext>
+		</form>
+
+		<section id="game" >
+			<div id="cards">
+				<div class="card">
+					<div class="face front"></div>
+					<div class="face back"></div>
+				</div>
+			</div>
+		</section>
+		<script type="text/javascript">
+			$(function(){
+		
+				pokes.matchingGame.arr=[];
+				var j=0;
+				var choosedCard;
+
+				for(var i=0;i<6;i++)
+				{
+					var a,b;
+					do{
+						a=Math.floor(Math.random()*104)//0~103随机数
+
+					}while(a%2!=0);
+					console.log(a);
+					choosedCard=pokes.matchingGame.deck[a];
+					pokes.matchingGame.arr[j]=choosedCard;
+					pokes.matchingGame.arr[j+1]=choosedCard;
+					j+=2;
+				}
+				console.log(pokes.matchingGame.arr);
+				pokes.matchingGame.arr.sort(shuffle);
+				console.log(pokes.matchingGame.arr);
+
+				var $card=$(".card");
+				for(var i=0;i<11;i++)
+				{
+					$card.clone().appendTo($("#cards"));//复制card并插入到cards中
+				}
+				//对每张牌进行设置
+				$(".card").each(function(index)//遍历每个card类
+				{	
+					//调整坐标
+					$(this).css({
+						"left":(pokes.matchingGame.cardWidth+20)*(index%4)+"px",//左边缘
+						"top":(pokes.matchingGame.cardHeight+20)*Math.floor(index/4)+"px"
+					});
+					//吐出一个牌号
+					var pattern=pokes.matchingGame.arr.pop();//删除并返回deck数组最后一个元素
+					//暂存牌号
+					$(this).data("pattern",pattern);
+					//把其翻牌后的对应牌面附加上去
+					$(this).find(".back").addClass(pattern);
+					//点击牌的功能函数挂接
+					$(this).click(selectCard);
+
+				});
+
+			});
+		</script>
+
+	</body>
+</html>

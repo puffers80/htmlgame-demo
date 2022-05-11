@@ -1,0 +1,167 @@
+body
+{
+    text-align: center;
+    background-image: url("../images/bg.jpg");
+}
+
+#game
+{
+    width: 502px;
+    height: 462px;
+    margin: 0 auto;
+    border: 1px solid #666;
+    border-radius: 10px;
+    background-image: url("../images/table.jpg");
+    position: relative;
+    display: -webkit-box;
+    -webkit-box-pack:center;
+    -webkit-box-align:center;
+}
+#cards
+{
+    width: 380px;
+    height: 400px;
+    position: relative;
+	margin:30px auto;
+}
+.card
+{
+    width: 80px;
+    height: 120px;
+    position: absolute;
+}
+.face
+{
+    width: 100%;
+    height: 100%;
+    border-radius:10px;
+    position: absolute;
+    -webkit-backface-visibility: hidden;
+    -webkit-transition:all .3s;
+}
+
+.card-flipped .front
+{
+    /*保证牌底在牌面下面，z-index值切换为小值*/
+    z-index: 8;
+    -webkit-transform: rotateY(180deg);
+}
+.card-flipped .back
+{
+    /*保证牌底在牌面上面，z-index值切换为大值*/
+    z-index: 10;
+    /*前面牌面已经翻过去，现在返回来*/
+    -webkit-transform: rotateY(0deg);
+}
+
+.front
+{
+	background:#999 url("../images/deck.png")0 -480px;
+	z-index:10;
+}
+.back
+{
+	background:#efefef url("../images/deck.png");
+	/* -webkit-transform:rotateY(-180deg); */
+	z-index:8;
+}
+.face:hover
+{
+	-webkit-box-shadow:0 0 40px #aaa;
+}
+/* 牌面定位样式 */
+.cardAA{background-position:0px 0;}
+.cardA2{background-position:-80px 0;}
+.cardA3{background-position:-160px 0;}
+.cardA4{background-position:-240px 0;}
+.cardA5{background-position:-320px 0;}
+.cardA6{background-position:-400px 0;}
+.cardA7{background-position:-480px 0;}
+.cardA8{background-position:-560px 0;}
+.cardA9{background-position:-640px 0;}
+.cardA10{background-position:-720px 0;}
+
+.cardAJ{background-position:-800px 0;}
+.cardAQ{background-position:-880px 0;}
+.cardAK{background-position:-960px 0;}
+
+.cardBA{background-position:0px -120px;}
+.cardB2{background-position:-80px -120px;}
+.cardB3{background-position:-160px -120px;}
+.cardB4{background-position:-240px -120px;}
+.cardB5{background-position:-320px -120px;}
+.cardB6{background-position:-400px -120px;}
+.cardB7{background-position:-480px -120px;}
+.cardB8{background-position:-560px -120px;}
+.cardB9{background-position:-640px -120px;}
+.cardB10{background-position:-720px -120px;}
+
+.cardBJ{background-position:-800px -120px;}
+.cardBQ{background-position:-880px -120px;}
+.cardBK{background-position:-960px -120px;}
+
+.cardCA{background-position:0px -240px;}
+.cardC2{background-position:-80px -240px;}
+.cardC3{background-position:-160px -240px;}
+.cardC4{background-position:-240px -240px;}
+.cardC5{background-position:-320px -240px;}
+.cardC6{background-position:-400px -240px;}
+.cardC7{background-position:-480px -240px;}
+.cardC8{background-position:-560px -240px;}
+.cardC9{background-position:-640px -240px;}
+.cardC10{background-position:-720px -240px;}
+
+.cardCJ{background-position:-800px -240px;}
+.cardCQ{background-position:-880px -240px;}
+.cardCK{background-position:-960px -240px;}
+
+
+.cardDA{background-position:0px -360px;}
+.cardD2{background-position:-80px -360px;}
+.cardD3{background-position:-160px -360px;}
+.cardD4{background-position:-240px -360px;}
+.cardD5{background-position:-320px -360px;}
+.cardD6{background-position:-400px -360px;}
+.cardD7{background-position:-480px -360px;}
+.cardD8{background-position:-560px -360px;}
+.cardD9{background-position:-640px -360px;}
+.cardD10{background-position:-720px -360px;}
+
+.cardDJ{background-position:-800px -360px;}
+.cardDQ{background-position:-880px -360px;}
+.cardDK{background-position:-960px -360px;}
+/* 移除牌 */
+.card-removed
+{
+	opacity:0;
+}
+
+
+form{
+    width: 60px;
+    height: 40px;
+    margin-left: 27px;
+}
+
+.time{
+    width: 60px;
+    height: 40px;
+    background-color: transparent;
+    border:0px;
+    color:rgb(51, 37, 37);
+    font-size:20px;
+    padding-left: 20px;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
+}
+
+.score{
+    width: 60px;
+    height: 40px;
+    background-color: transparent;
+    border:0px;
+    color:rgb(51, 37, 37);
+    font-size:20px;
+    padding-left: 20px;
+    padding-top: 20px;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
+}
